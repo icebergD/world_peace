@@ -1,1 +1,1 @@
-web: gunicorn --chdir spaceCoin worldPeace.wsgi --log-file -
+web: gunicorn --chdir worldPeace worldPeace.wsgi --log-file -
