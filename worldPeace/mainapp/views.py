@@ -74,9 +74,16 @@ class respondOnVacancy(View):
 class userAccaunt(View):
     def get(self, request):
         if request.user.is_authenticated:
-            responders = RespondersForBusines.objects.filter(s_user__user__id=request.user.id)
-            print(responders)
-            return render(request, 'userAccaunt.html', {'a': 'a'})
+            resume = MUser.objects.filter(user__id=request.user.id).values().first()
+            responders = RespondersForBusines.objects.filter(s_user__user__id=request.user.id).values()
+            responders_list = []
+            for i in responders:
+
+                busines = list(Busines.objects.filter(id=i['b_user_id']).values())
+                responders_list.append(busines)
+
+            achive = Achive()
+            return render(request, 'userAccaunt.html', {'resume': resume, 'responders': responders_list, 'achive': achive})
         else:
             return redirect('login')
 
