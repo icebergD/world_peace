@@ -12,14 +12,27 @@ def hello(request):
 
 class home(View):
     def get(self, request):
-        # if request.user.isauthenticated:
+        # if request.user.is_authenticated:
         return render(request, 'base.html', {'a':'b'})
 
 class studentList(View):
     def get(self, request):
-        if request.user.isauthenticated:
+        if request.user.is_authenticated:
             students = list(MUser.objects.all().values())#.order_by('-created')
-            return render(request, 'studentList.html', {'students':students})
+            students_list = []
+            for i in students:
+                category = Category.objects.filter(id=i['category_id']).values('title')
+                el = {'student': i, 'category': category[0]['title']}
+                students_list.append(el)
+
+            return render(request, 'studentList.html', {'students': students_list})
+        else:
+            return redirect('login')
+class respondOnUser(View):
+    def post(self, request):
+        if request.user.is_authenticated:
+            print(request.POST.get('user_id'))
+            return redirect('student-list')
         else:
             return redirect('login')
 
@@ -28,10 +41,12 @@ class LoginUser(LoginView):
     template_name = 'login.html'
 
     def get_success_url(self):
+        print(self.request.user.id)
+
         if self.request.user.is_staff:
             return reverse_lazy('home')
         else:
-            return reverse_lazy('client-home')
+            return reverse_lazy('home')
 
 
 def logout_user(request):

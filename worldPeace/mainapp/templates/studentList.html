@@ -5,8 +5,30 @@
 {% block content %}
 
 {% for st in students %}
+<!--    {{ st }}<br>-->
+    <br>
+    {{ st.student.name }}<br>
+    {{ st.student.photo }}<br>
+    {{ st.student.country }}<br>
+    {{ st.student.city }}<br>
+    {{ st.student.region }}<br>
+    {{ st.student.language1 }}<br>
+    {{ st.student.language2 }}<br>
+    {{ st.student.study_name }}<br>
+    {{ st.student.study_end_year }}<br>
+    {{ st.student.study_grade }}<br>
+    {{ st.student.faculty }}<br>
 
-{{ st }}
+    {{ st.category }}<br>
+    <form action="/respond-on-user" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="user_id" value="{{ st.student.user_id }}">
+        <input type="submit" class="btn btn-primary" value="откликнуться" >
+    </form>
+
+
+    <br>
+
 
 {% endfor %}
 
