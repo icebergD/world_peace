@@ -1,0 +1,38 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+
+
+{% for vk in vacancy %}
+
+    <br>
+    {{ vk.vacancy.title }}<br>
+    {{ vk.vacancy.description }}<br>
+    {{ vk.vacancy.salary }}<br>
+    {{ vk.vacancy.region }}<br>
+    {{ vk.vacancy.status }}<br>
+    {{ vk.vacancy.contact }}<br>
+    {{ vk.vacancy.bussy }}<br>
+
+
+    {{ vk.category }}<br>
+    <form action="/respond-on-vacancy" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="vacancy_id" value="{{ vk.vacancy.id }}">
+        <input type="submit" class="btn btn-primary" value="откликнуться" >
+    </form>
+
+
+    <br>
+
+
+{% endfor %}
+
+
+{% endblock content %}
+{% block script %}
+<!--<script type="text/javascript" src="{% static 'js/configureTable.js' %}"></script>-->
+{% endblock script %}

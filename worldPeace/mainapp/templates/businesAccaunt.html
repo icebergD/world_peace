@@ -1,0 +1,19 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+
+
+{{ busines.title}}<br>
+{{ busines.image}}<br>
+{{ busines.description}}<br>
+<br>
+{{ responders }}
+
+
+{% endblock content %}
+{% block script %}
+<!--<script type="text/javascript" src="{% static 'js/configureTable.js' %}"></script>-->
+{% endblock script %}

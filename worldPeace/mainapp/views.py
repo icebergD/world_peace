@@ -7,6 +7,7 @@ from .forms import LoginUserForm
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from .models import *
+
 def hello(request):
     return HttpResponse("Hello from AvocadOS")
 
@@ -20,6 +21,7 @@ class studentList(View):
         if request.user.is_authenticated:
             students = list(MUser.objects.all().values())#.order_by('-created')
             students_list = []
+            print(students)
             for i in students:
                 category = Category.objects.filter(id=i['category_id']).values('title')
                 el = {'student': i, 'category': category[0]['title']}
@@ -31,22 +33,85 @@ class studentList(View):
 class respondOnUser(View):
     def post(self, request):
         if request.user.is_authenticated:
-            print(request.POST.get('user_id'))
+            muser_id = request.POST.get('muser_id')
+            ur = RespondersForBusines(
+                s_user=MUser.objects.get(id=muser_id),
+                b_user=Busines.objects.get(user=request.user)
+            )
+            ur.save()
             return redirect('student-list')
         else:
             return redirect('login')
+
+class vacancyList(View):
+    def get(self, request):
+        if request.user.is_authenticated:
+            vacancy = list(Vacancy.objects.all().values())#.order_by('-created')
+
+            vacancy_list = []
+            for i in vacancy:
+                category = Category.objects.filter(id=i['category_id']).values('title')
+                el = {'vacancy': i, 'category': category[0]['title']}
+                vacancy_list.append(el)
+
+            return render(request, 'vacancyList.html', {'vacancy': vacancy_list})
+        else:
+            return redirect('login')
+class respondOnVacancy(View):
+    def post(self, request):
+        if request.user.is_authenticated:
+            vacancy_id = request.POST.get('vacancy_id')
+
+            ur = RespondersForUser(
+                s_user=MUser.objects.get(user__id=request.user.id),
+                vacancy=Vacancy.objects.get(id=vacancy_id)
+            )
+            ur.save()
+            return redirect('vacancy-list')
+        else:
+            return redirect('login')
+
+class userAccaunt(View):
+    def get(self, request):
+        if request.user.is_authenticated:
+            responders = RespondersForBusines.objects.filter(s_user__user__id=request.user.id)
+            print(responders)
+            return render(request, 'userAccaunt.html', {'a': 'a'})
+        else:
+            return redirect('login')
+
+class businesAccaunt(View):
+    def get(self, request):
+        if request.user.is_authenticated:
+            busines = Busines.objects.filter(user=request.user).values().first()
+            responders = RespondersForUser.objects.filter(vacancy__busines__id=busines['id']).values()
+            responders_list = []
+            for i in responders:
+                vacancy = Vacancy.objects.filter(id=i['vacancy_id']).values().first()
+                user = MUser.objects.filter(id=i['s_user_id']).values().first()
+                el = {
+                    'vacancy':vacancy,
+                    'user':user
+                }
+                responders_list.append(el)
+            return render(request, 'businesAccaunt.html', {'busines': busines, 'responders': responders_list})
+        else:
+            return redirect('login')
+
+
 
 class LoginUser(LoginView):
     form_class = LoginUserForm
     template_name = 'login.html'
 
     def get_success_url(self):
-        print(self.request.user.id)
-
-        if self.request.user.is_staff:
-            return reverse_lazy('home')
+        print()
+        if len(list(Busines.objects.filter(user=self.request.user.id))) >0:
+            return reverse_lazy('student-list')
+        elif len(list(MUser.objects.filter(user=self.request.user.id))) > 0:
+            return reverse_lazy('vacancy-list')
         else:
-            return reverse_lazy('home')
+            return redirect('login')
 
 
 def logout_user(request):
