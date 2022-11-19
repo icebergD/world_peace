@@ -42,7 +42,7 @@ body{
     padding: 15px 30px;
 }
 .sidebar__items{
-    margin-top: 19%;
+    margin-top: 0%;
 }
 .sidebar__item{
     display: flex;
@@ -725,4 +725,25 @@ h3 {
 /*user accaunt*/
 .mcolor-text{
     opacity:0!important;
+}
+/*task*/
+.task-block{
+    margin:20px;
+    height: 80vh;
+    overflow:auto;
+    display:none;
+}
+.task-gener-panal{
+    position:absolute;
+    left:40%;
+    top:30%;
+}
+.task-gener-panal .card{
+    width:400px;
+}
+.task-loader{
+
+    position:absolute;
+    left:50%;
+    top:45%;
 }

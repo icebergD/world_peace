@@ -16,6 +16,7 @@ urlpatterns = [
     path('busines-accaunt', views.businesAccaunt.as_view(), name='busines-accaunt'),
 
     path('tutorials', views.tutorials.as_view(), name='tutorials'),
+    path('tasks', views.tasks.as_view(), name='tasks'),
 
     path('login/', views.LoginUser.as_view(), name='login'),
     path('logout/', views.logout_user, name='logout'),

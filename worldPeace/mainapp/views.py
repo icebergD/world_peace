@@ -116,6 +116,14 @@ class tutorials(View):
         else:
             return redirect('login')
 
+class tasks(View):
+    def get(self, request):
+        if request.user.is_authenticated:
+
+            return render(request, 'tasks.html')
+        else:
+            return redirect('login')
+
 
 class LoginUser(LoginView):
     form_class = LoginUserForm
