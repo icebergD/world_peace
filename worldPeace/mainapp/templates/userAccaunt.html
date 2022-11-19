@@ -12,9 +12,9 @@
 <div class="resume">
   <div class="base">
     <div class="profile">
-      <div class="photo"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/764024/profile/profile-512.jpg"/></div>
+      <div class="photo"><img src="{{ resume.photo }}"/></div>
       <div class="info">
-        <h4 class="name">Kelly Chen</h4><small class="job">Front-end Web Designer</small>
+        <h4 class="name">{{ resume.name }}</h4><small class="job">Front-end Web Designer</small>
       </div>
     </div>
     <div class="about">
@@ -27,10 +27,7 @@
       <div class="email"><i class="fa fa-envelope"></i><span>ヽ(*´∀`)@gmail.com</span></div>
       <div class="website"><a href="http://codepen.io/xichen" target="_blank"> <i class="fa fa-home"></i><span>codepen.io/xichen</span></a></div>
     </div>
-    <div class="follow">
-      <h3>Follow</h3>
-      <div class="box"><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a><a href="javascript:void(0);"><i class="pif-plurkapp"></i></a><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a><a href="javascript:void(0);"><i class="fa fa-pinterest-p"></i></a><a href="javascript:void(0);"><i class="fa fa-tumblr"></i></a><a href="https://codepen.io/xichen/" target="_blank"><i class="fa fa-codepen"></i></a></div>
-    </div>
+
   </div>
   <div class="func">
     <div class="work">
@@ -90,32 +87,7 @@
     </div>
     <div class="skills-soft">
       <h3><i class="fa fa-th-list"></i>Software Skills</h3>
-      <ul>
-        <li data-percent="94">
-          <svg viewbox="0 0 100 100">
-            <circle cx="50" cy="50" r="45"></circle>
-            <circle class="cbar" cx="50" cy="50" r="45"></circle>
-          </svg><span>Photoshop</span><small></small>
-        </li>
-        <li data-percent="80">
-          <svg viewbox="0 0 100 100">
-            <circle cx="50" cy="50" r="45"></circle>
-            <circle class="cbar" cx="50" cy="50" r="45"></circle>
-          </svg><span>Illustrator</span><small></small>
-        </li>
-        <li data-percent="89">
-          <svg viewbox="0 0 100 100">
-            <circle cx="50" cy="50" r="45"></circle>
-            <circle class="cbar" cx="50" cy="50" r="45"></circle>
-          </svg><span>Sublime Text</span><small></small>
-        </li>
-        <li data-percent="55">
-          <svg viewbox="0 0 100 100">
-            <circle cx="50" cy="50" r="45"></circle>
-            <circle class="cbar" cx="50" cy="50" r="45"></circle>
-          </svg><span>Dreamweaver</span><small></small>
-        </li>
-      </ul>
+
     </div>
     <div class="interests">
       <h3><i class="fa fa-star"></i>Interests</h3>
@@ -138,51 +110,29 @@
 
 
 
-<!--{{ resume }}-->
-<!--<br>-->
-<!--{{ resume.name }}<br>-->
-<!--{{ resume.photo }}<br>-->
-<!--{{ resume.country }}<br>-->
-<!--{{ resume.city }}<br>-->
-<!--{{ resume.region }}<br>-->
-<!--{{ resume.language1 }}<br>-->
-<!--{{ resume.language2 }}<br>-->
-<!--{{ resume.study_name }}<br>-->
-<!--{{ resume.study_end_year }}<br>-->
-<!--{{ resume.study_grade }}<br>-->
-<!--{{ resume.faculty }}<br>-->
-<!--{{ resume.speciality }}<br>-->
-<!--<br>-->
+{{ resume }}
+<br>
+<br>
+<br>
+{{ resume.country }}<br>
+{{ resume.city }}<br>
+{{ resume.region }}<br>
+{{ resume.language1 }}<br>
+{{ resume.language2 }}<br>
+{{ resume.study_name }}<br>
+{{ resume.study_end_year }}<br>
+{{ resume.study_grade }}<br>
+{{ resume.faculty }}<br>
+{{ resume.speciality }}<br>
+<br>
 
-<!--{{ responders }}-->
+{{ responders }}
 
 
 
 {% endblock content %}
 {% block script %}
 <script type="text/javascript">
-    $('.skills-prog li').find('.skills-bar').each (i) ->
-  $(this).find('.bar').delay(i*150).animate {
-    width: $(this).parents().attr('data-percent') + '%'
-  }, 1000, 'linear', ->
-    $(this).css 'transition-duration': '.5s'
-  return
-$('.skills-soft li').find('svg').each (i) ->
-  circle = $(this).children('.cbar')
-  r = circle.attr('r')
-  c = Math.PI * (r * 2)
-  percent = $(this).parent().data 'percent'
-  cbar = ((100-percent)/100) * c
-  circle.css 'stroke-dashoffset': c, 'stroke-dasharray': c
-  circle.delay(i*150).animate {
-    strokeDashoffset: cbar
-  }, 1000, 'linear', ->
-    circle.css 'transition-duration': '.3s'
-  $(this).siblings('small').prop('Counter', 0).delay(i*150).animate {
-    Counter: percent
-  }, duration: 1000, step: (now) ->
-    $(this).text Math.ceil(now) + '%'
-  return
 
 </script>
 {% endblock script %}
