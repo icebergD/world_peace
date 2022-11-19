@@ -81,7 +81,9 @@ class userAccaunt(View):
                 busines = list(Busines.objects.filter(id=i['b_user_id']).values())
                 responders_list.append(busines)
 
-            achive = Achive
+            achive_id = UserAchive.objects.filter(user__id=request.user.id).values('achive_id')
+            achive = list(Achive.objects.filter(id__in=achive_id).values())
+            print(achive)
 
             category = Category.objects.filter(id=resume['category_id']).values().first()['title']
             return render(request, 'userAccaunt.html', {'resume': resume, 'responders': responders_list, 'achive': achive, 'category': category})

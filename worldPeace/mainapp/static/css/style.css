@@ -449,6 +449,7 @@ h3 {
     display: block;
     clear: both; }
   .resume .base, .resume .func {
+
     box-sizing: border-box;
     float: left; }
     .resume .base > div, .resume .func > div {
@@ -456,7 +457,7 @@ h3 {
       .resume .base > div:last-of-type, .resume .func > div:last-of-type {
         padding-bottom: 0; }
   .resume .base {
-    width: 20%;
+    width: 50%;
     padding: 30px 15px;
     background: rgba(238, 238, 238, 0.6); }
     .resume .base .profile {
@@ -686,7 +687,7 @@ h3 {
       border: 1px solid #cdcdcd;
       text-align: center;
       display: flex;
-      justify-content: space-between; }
+      justify-content: start; }
       .resume .func .interests-items div {
         display: inline-block;
         width: 80px;
