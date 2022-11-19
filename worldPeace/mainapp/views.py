@@ -14,8 +14,8 @@ def hello(request):
 class home(View):
     def get(self, request):
         # if request.user.is_authenticated:
-        return render(request, 'base.html', {'a':'b'})
-
+        # return render(request, 'base.html', {'a':'b'})
+        return redirect('login')
 class studentList(View):
     def get(self, request):
         if request.user.is_authenticated:
@@ -78,12 +78,13 @@ class userAccaunt(View):
             responders = RespondersForBusines.objects.filter(s_user__user__id=request.user.id).values()
             responders_list = []
             for i in responders:
-
                 busines = list(Busines.objects.filter(id=i['b_user_id']).values())
                 responders_list.append(busines)
 
             achive = Achive()
-            return render(request, 'userAccaunt.html', {'resume': resume, 'responders': responders_list, 'achive': achive})
+
+            category = Category.objects.filter(id=resume['category_id']).values().first()['title']
+            return render(request, 'userAccaunt.html', {'resume': resume, 'responders': responders_list, 'achive': achive, 'category': category})
         else:
             return redirect('login')
 

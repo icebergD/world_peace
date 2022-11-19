@@ -25,13 +25,17 @@
 
             </div>
             <div class="sidebar__item">
-                <div class="item__txt">Поиск</div>
-                <img src="{% static 'img/icons8-search-2.svg' %}" alt="" class="item__img">
+                <div class="item__txt">Курсы</div>
+                <img src="{% static 'img/icons8-open-book-ios-16-filled-96.png' %}" alt="" class="item__img">
             </div>
             <div class="sidebar__item">
                 <div class="item__txt">Аккаунт</div>
                 <a href="{% url 'user-accaunt' %}"><img src="{% static 'img/icons8-achievement-96-2.png' %}" alt="" class="item__img"></a>
             </div>
+            <div class="sidebar__item">
+                <a href="{% url 'logout' %}"> <button type="button" class="btn btn-outline-dark me-2">Выйти</button></a>
+            </div>
+
         </div>
     </div>
 

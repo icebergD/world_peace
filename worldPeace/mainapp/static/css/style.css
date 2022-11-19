@@ -476,7 +476,8 @@ h3 {
         transform: skewY(-5deg);
         z-index: -1; }
       .resume .base .profile .photo img {
-        width: 100%;
+        height: 6.23em;
+        width: 6.23em;
         border-radius: 50%; }
       .resume .base .profile .info {
         text-align: center;
