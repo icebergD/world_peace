@@ -11,16 +11,16 @@
         <div class="search__inputs">
             <div class="search">
                 <div class="filters__section"><form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    <input class="form-control me-2" type="search" placeholder="Поиск по названию" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Поиск</button>
                 </form>
                 </div>
             </div>
 
             <div class="search">
                 <div class="filters__section"><form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    <input class="form-control me-2" type="search" placeholder="Поиск по локации" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Поиск</button>
                 </form>
                 </div>
             </div>
@@ -30,42 +30,40 @@
         <div class="filters">
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                    Dropdown button
+                    Занятость
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    <li><a class="dropdown-item" href="#">Полная</a></li>
+                    <li><a class="dropdown-item" href="#">Не полная</a></li>
                 </ul>
             </div>
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
-                    Dropdown button
+                    Режим
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    <li><a class="dropdown-item" href="#">Онлайн</a></li>
+                    <li><a class="dropdown-item" href="#">Офлайн</a></li>
                 </ul>
             </div>
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false">
-                    Dropdown button
+                    Дата публикации
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    <li><a class="dropdown-item" href="#">Все</a></li>
+                    <li><a class="dropdown-item" href="#">Прошлый месяц</a></li>
+                    <li><a class="dropdown-item" href="#">На прошлой недели</a></li>
                 </ul>
             </div>
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton4" data-bs-toggle="dropdown" aria-expanded="false">
-                    Dropdown button
+                    Зарплата
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton4">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    <li><a class="dropdown-item" href="#">Нет</a></li>
+                    <li><a class="dropdown-item" href="#">Да</a></li>
+
                 </ul>
             </div>
         </div>
@@ -77,7 +75,7 @@
                         <h5 class="card-title v-title">{{ vk.vacancy.title }}</h5>
 
                         <h6 class="card-subtitle mb-2 text-muted v-category">{{ vk.category }}</h6>
-                        <p class="v-salary">{{ vk.vacancy.salary }} сум</p>
+<!--                        <p class="v-salary">{{ vk.vacancy.salary }} сум</p>-->
                         <p class="card-text"></p>
 
                           <p class="hidden-p v-description">{{ vk.vacancy.description }}</p>
@@ -98,7 +96,7 @@
 				    <h5 class="card-title v-title">{{ vacancy.0.vacancy.title }}</h5>
 				    <h6 class="card-subtitle mb-2 text-muted v-category">категория: <span>{{ vacancy.0.category }}</span></h6>
                       <hr>
-				    <p class="card-text v-salary">Зарплата: <span>{{ vacancy.0.vacancy.salary }}</span></p>
+<!--				    <p class="card-text v-salary">Зарплата: <span>{{ vacancy.0.vacancy.salary }}</span></p>-->
 				    <p class="card-text v-region">Регион: <span>{{ vacancy.0.vacancy.region }}</span></p>
 				    <p class="card-text v-status">Статус: <span>{{ vacancy.0.vacancy.status }}</span></p>
 				    <p class="card-text v-bussy">Занятость: <span>{{ vacancy.0.vacancy.bussy }}</span></p>
@@ -138,7 +136,7 @@ $( document ).ready(function() {
 
         $(".content-panel .v-title").text(this_obj.find(".v-title").text());
         $(".content-panel .v-category span").text(this_obj.find(".v-category").text());
-        $(".content-panel .v-salary span").text(this_obj.find(".v-salary").text());
+        //$(".content-panel .v-salary span").text(this_obj.find(".v-salary").text());
         $(".content-panel .v-region span").text(this_obj.find(".v-region").text());
         $(".content-panel .v-status span").text(this_obj.find(".v-status").text());
         $(".content-panel .v-bussy span").text(this_obj.find(".v-bussy").text());

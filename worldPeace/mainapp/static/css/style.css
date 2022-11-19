@@ -713,3 +713,11 @@ h3 {
               fill: #1fcf65; }
         .resume .func .interests-items div span {
           display: block; }
+/*tutorial*/
+.tutorial-block{
+    background:#2e2a33;
+    width:100%;
+    height:100vh;
+    display:flex;
+    align-items: center;
+}

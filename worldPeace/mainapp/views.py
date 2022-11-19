@@ -81,7 +81,7 @@ class userAccaunt(View):
                 busines = list(Busines.objects.filter(id=i['b_user_id']).values())
                 responders_list.append(busines)
 
-            achive = Achive()
+            achive = Achive
 
             category = Category.objects.filter(id=resume['category_id']).values().first()['title']
             return render(request, 'userAccaunt.html', {'resume': resume, 'responders': responders_list, 'achive': achive, 'category': category})
@@ -106,6 +106,13 @@ class businesAccaunt(View):
         else:
             return redirect('login')
 
+class tutorials(View):
+    def get(self, request):
+        if request.user.is_authenticated:
+
+            return render(request, 'tutorials.html')
+        else:
+            return redirect('login')
 
 
 class LoginUser(LoginView):
@@ -117,7 +124,7 @@ class LoginUser(LoginView):
         if len(list(Busines.objects.filter(user=self.request.user.id))) >0:
             return reverse_lazy('student-list')
         elif len(list(MUser.objects.filter(user=self.request.user.id))) > 0:
-            return reverse_lazy('vacancy-list')
+            return reverse_lazy('tutorials')
         else:
             return redirect('login')
 

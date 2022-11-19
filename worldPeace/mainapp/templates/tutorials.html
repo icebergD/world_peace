@@ -1,0 +1,43 @@
+
+{% extends "userBase.html" %}
+{% load static %}
+
+{% block content %}
+
+
+
+<div class="tutorial-block">
+
+    <div class="" data-marquiz-id="6377d253529dd9004f08878d"></div>
+</div>
+
+
+
+
+</div>
+
+{% endblock content %}
+{% block script %}
+<script>
+(function(w, d, s, o){
+  var j = d.createElement(s); j.async = true; j.src = '//script.marquiz.ru/v2.js';j.onload = function() {
+    if (document.readyState !== 'loading') Marquiz.init(o);
+    else document.addEventListener("DOMContentLoaded", function() {
+      Marquiz.init(o);
+    });
+  };
+  d.head.insertBefore(j, d.head.firstElementChild);
+})(window, document, 'script', {
+    host: '//quiz.marquiz.ru',
+    region: 'eu',
+    id: '6377d253529dd9004f08878d',
+    autoOpen: false,
+    autoOpenFreq: 'once',
+    openOnExit: false,
+    disableOnMobile: false
+  }
+);
+</script>
+<script>(function(t, p) {window.Marquiz ? Marquiz.add([t, p]) : document.addEventListener('marquizLoaded', function() {Marquiz.add([t, p])})})('Inline', {id: '6377d253529dd9004f08878d', buttonText: 'Узнать что подходит', bgColor: '#d34085', textColor: '#ffffff', rounded: true, shadow: 'rgba(211, 64, 133, 0.5)', blicked: true, buttonOnMobile: true})</script>
+
+{% endblock script %}
