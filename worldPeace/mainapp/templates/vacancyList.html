@@ -1,38 +1,155 @@
 
-{% extends "base.html" %}
+{% extends "userBase.html" %}
 {% load static %}
 
 {% block content %}
 
 
 
-{% for vk in vacancy %}
 
-    <br>
-    {{ vk.vacancy.title }}<br>
-    {{ vk.vacancy.description }}<br>
-    {{ vk.vacancy.salary }}<br>
-    {{ vk.vacancy.region }}<br>
-    {{ vk.vacancy.status }}<br>
-    {{ vk.vacancy.contact }}<br>
-    {{ vk.vacancy.bussy }}<br>
+    <div class="main__content">
+        <div class="search__inputs">
+            <div class="search">
+                <div class="filters__section"><form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+                </div>
+            </div>
 
-
-    {{ vk.category }}<br>
-    <form action="/respond-on-vacancy" method="post">
-        {% csrf_token %}
-        <input type="hidden" name="vacancy_id" value="{{ vk.vacancy.id }}">
-        <input type="submit" class="btn btn-primary" value="откликнуться" >
-    </form>
-
-
-    <br>
+            <div class="search">
+                <div class="filters__section"><form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+                </div>
+            </div>
+        </div>
 
 
-{% endfor %}
+        <div class="filters">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    Dropdown button
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+            </div>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                    Dropdown button
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+            </div>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false">
+                    Dropdown button
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+            </div>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton4" data-bs-toggle="dropdown" aria-expanded="false">
+                    Dropdown button
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton4">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="vacancies__card">
+        	<div class="cards-panel">
+				{% for vk in vacancy %}
+                    <div class="card card-item" id="v-{{ vk.vacancy.id }}">
+                      <div class="card-body">
+                        <h5 class="card-title v-title">{{ vk.vacancy.title }}</h5>
+
+                        <h6 class="card-subtitle mb-2 text-muted v-category">{{ vk.category }}</h6>
+                        <p class="v-salary">{{ vk.vacancy.salary }} сум</p>
+                        <p class="card-text"></p>
+
+                          <p class="hidden-p v-description">{{ vk.vacancy.description }}</p>
+                          <p class="hidden-p v-region">{{ vk.vacancy.region }}</p>
+                          <p class="hidden-p v-status">{{ vk.vacancy.status }}</p>
+                          <p class="hidden-p v-contact">{{ vk.vacancy.contact }}</p>
+                          <p class="hidden-p v-bussy">{{ vk.vacancy.bussy }}</p>
+                          <p class="hidden-p v-id">{{ vk.vacancy.id }}</p>
+                      </div>
+                    </div>
+
+                {% endfor %}
+
+        	</div>
+        	<div class="content-panel">
+        		<div class="card content-panel1">
+				  <div class="card-body">
+				    <h5 class="card-title v-title">{{ vacancy.0.vacancy.title }}</h5>
+				    <h6 class="card-subtitle mb-2 text-muted v-category">категория: <span>{{ vacancy.0.category }}</span></h6>
+                      <hr>
+				    <p class="card-text v-salary">Зарплата: <span>{{ vacancy.0.vacancy.salary }}</span></p>
+				    <p class="card-text v-region">Регион: <span>{{ vacancy.0.vacancy.region }}</span></p>
+				    <p class="card-text v-status">Статус: <span>{{ vacancy.0.vacancy.status }}</span></p>
+				    <p class="card-text v-bussy">Занятость: <span>{{ vacancy.0.vacancy.bussy }}</span></p>
+				    <p class="card-text v-contact">Контакт: <span>{{ vacancy.0.vacancy.contact }}</span></p>
+				    <p class="card-text v-description">Описание: <span>{{ vacancy.0.vacancy.description }}</span></p>
+                      <hr>
+				    <form action="/respond-on-vacancy" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="vacancy_id" class="v-id" value="{{ vacancy.0.vacancy.id }}">
+                        <input type="submit" class="btn btn-primary" value="откликнуться" >
+                    </form>
+				  </div>
+				</div>
+        	</div>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
 
 
 {% endblock content %}
 {% block script %}
-<!--<script type="text/javascript" src="{% static 'js/configureTable.js' %}"></script>-->
+<script>
+$( document ).ready(function() {
+
+    $(".card-item").click(function() {
+        var this_obj = $(this);
+
+        $(".content-panel .v-title").text(this_obj.find(".v-title").text());
+        $(".content-panel .v-category span").text(this_obj.find(".v-category").text());
+        $(".content-panel .v-salary span").text(this_obj.find(".v-salary").text());
+        $(".content-panel .v-region span").text(this_obj.find(".v-region").text());
+        $(".content-panel .v-status span").text(this_obj.find(".v-status").text());
+        $(".content-panel .v-bussy span").text(this_obj.find(".v-bussy").text());
+        $(".content-panel .v-contact span").text(this_obj.find(".v-contact").text());
+        $(".content-panel .v-description span").text(this_obj.find(".v-description").text());
+        $(".content-panel .v-id").val(parseInt(this_obj.find(".v-id").text()));
+
+
+    });
+
+});
+
+</script>
 {% endblock script %}

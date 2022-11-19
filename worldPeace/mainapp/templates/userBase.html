@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Scouter</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+<div class="header">
+    <div class="grow__sidebar">
+        <div class="logo">SCOUTER
+            <img class="logo__image"
+                 src="{% static 'img/logo-bird.png' %}"
+                 alt=""></div>
+        <button class="lang__button">RU</button>
+
+        <div class="sidebar__items">
+            <div class="sidebar__item">
+                <div class="item__txt">Домой</div>
+                <a href="{% url 'vacancy-list' %}"><img src="{% static 'img/main-icon.svg' %}" alt="" class="item__img"></a>
+
+            </div>
+            <div class="sidebar__item">
+                <div class="item__txt">Поиск</div>
+                <img src="{% static 'img/icons8-search-2.svg' %}" alt="" class="item__img">
+            </div>
+            <div class="sidebar__item">
+                <div class="item__txt">Аккаунт</div>
+                <a href="{% url 'user-accaunt' %}"><img src="{% static 'img/icons8-achievement-96-2.png' %}" alt="" class="item__img"></a>
+            </div>
+        </div>
+    </div>
+
+{% block content %}
+<a href="{% url 'logout' %}"> <button type="button" class="btn btn-outline-primary me-2">Чиқиш</button></a>
+HELLO FROM AvocadOS
+
+{% endblock content %}
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+
+{% block script %}
+<!--<script type="text/javascript" src="{% static 'js/home.js' %}"></script>-->
+{% endblock script %}
+
+
+</body>
+</html>
